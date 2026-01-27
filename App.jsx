@@ -1,39 +1,26 @@
-import React,{useState} from 'react'
+import React, { useState } from 'react';
+
 function App() {
-  const [tasks,setTask]=useState([])
-  const [text,setText]=useState("")
-  const addTask=()=>{
-    setTask([...tasks,{name:text,completed:false}])
-    setText("")
-   
-  }
-  const deleteTask=(index)=>{
-    setTask(tasks.filter((_,i)=>i!==index));
-  }
+  const [color, setColor] = useState("white");
+
   return (
     <div>
-      <h1>To-Do list</h1>
-      <input
-        value={text}
-        onChange={(e)=>setText(e.target.value)}
-        placeholder='Enter task...'
-      />
-      <button onClick={addTask}>Add</button>
+      <h1>Color-Picker</h1>
 
+      <button onClick={()=>setColor("red")}>Red</button>
+      <button onClick={()=>setColor("blue")}>Blue</button>
+      <button onClick={()=>setColor("green")}>Green</button>
 
-      <ul>
-        {tasks.map((task,index)=>(
-          <li key={index}>
-            <input
-              type="checkbox"
-              checked={tasks.completed}/>
-            <span className={task.completed ? 'done' : ''}>{task.name}</span>
-            <button onClick={()=>deleteTask(index)}>delete</button>
-          </li>
-        ))}
-      </ul>
+      <div
+        style={{
+          height: "100px",
+          width: "200px",
+          border: "1px solid",
+          marginLeft: "240px",
+          marginTop: "20px",
+          backgroundColor: color}}></div>
     </div>
-  )
+  );
 }
 
 export default App;
