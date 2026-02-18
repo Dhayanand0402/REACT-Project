@@ -44,4 +44,4 @@ const Styles={
 }
 
 
-export default TabComponent
+export default TabComponent;
